@@ -3,26 +3,27 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Dmitrii Dimov | Innovation Portfolio</title>
+    <title>Dmitrii Dimov | Digital Experience</title>
+    <!-- v1.0.2 - Innovative Redesign -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
     <style>
         :root {
-            --primary: #6366f1;
-            --primary-glow: rgba(99, 102, 241, 0.5);
-            --accent: #f43f5e;
-            --bg: #0f172a;
-            --card-bg: rgba(30, 41, 59, 0.7);
-            --text-main: #f8fafc;
-            --text-dim: #94a3b8;
-            --glass-border: rgba(255, 255, 255, 0.1);
+            --primary: #8b5cf6;
+            --secondary: #ec4899;
+            --dark: #030712;
+            --card: rgba(17, 24, 39, 0.8);
+            --border: rgba(255, 255, 255, 0.1);
+            --text: #f3f4f6;
+            --dim: #9ca3af;
         }
 
         * {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
+            cursor: default;
         }
 
         html {
@@ -30,331 +31,275 @@
         }
 
         body {
-            font-family: 'Inter', sans-serif;
-            background-color: var(--bg);
-            color: var(--text-main);
+            font-family: 'Plus Jakarta Sans', sans-serif;
+            background-color: var(--dark);
+            color: var(--text);
             line-height: 1.6;
             overflow-x: hidden;
         }
 
-        /* Animated Background */
-        .bg-glow {
+        /* Dynamic Animated Background */
+        .bg-mesh {
             position: fixed;
             top: 0;
             left: 0;
             width: 100%;
             height: 100%;
             z-index: -1;
-            background: radial-gradient(circle at 50% 50%, #1e293b 0%, #0f172a 100%);
+            background: 
+                radial-gradient(at 0% 0%, rgba(139, 92, 246, 0.15) 0px, transparent 50%),
+                radial-gradient(at 100% 0%, rgba(236, 72, 153, 0.15) 0px, transparent 50%),
+                radial-gradient(at 100% 100%, rgba(59, 130, 246, 0.15) 0px, transparent 50%),
+                radial-gradient(at 0% 100%, rgba(16, 185, 129, 0.15) 0px, transparent 50%);
+            animation: mesh 20s ease infinite alternate;
         }
 
-        .blob {
-            position: absolute;
-            width: 500px;
-            height: 500px;
-            background: var(--primary);
-            filter: blur(80px);
-            border-radius: 50%;
-            opacity: 0.15;
-            animation: move 20s infinite alternate;
+        @keyframes mesh {
+            0% { transform: scale(1); }
+            100% { transform: scale(1.1); }
         }
 
-        @keyframes move {
-            from { transform: translate(-10%, -10%); }
-            to { transform: translate(20%, 20%); }
-        }
-
-        /* Navigation */
+        /* Glass Navigation */
         nav {
             position: fixed;
-            top: 0;
-            width: 100%;
-            padding: 1.5rem 0;
+            top: 20px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 90%;
+            max-width: 600px;
+            background: rgba(255, 255, 255, 0.03);
+            backdrop-filter: blur(15px);
+            border: 1px solid var(--border);
+            border-radius: 100px;
             z-index: 1000;
-            transition: all 0.4s;
-            backdrop-filter: blur(10px);
-            border-bottom: 1px solid var(--glass-border);
+            padding: 0.75rem;
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
         }
 
-        .nav-container {
-            max-width: 1100px;
-            margin: 0 auto;
+        .nav-links {
             display: flex;
-            justify-content: center;
-            gap: 2.5rem;
+            justify-content: space-around;
+            list-style: none;
         }
 
-        .nav-container a {
+        .nav-links a {
+            color: var(--dim);
             text-decoration: none;
-            color: var(--text-dim);
-            font-weight: 500;
-            font-size: 0.9rem;
+            font-size: 0.85rem;
+            font-weight: 600;
+            padding: 0.5rem 1rem;
+            border-radius: 50px;
             transition: 0.3s;
-            text-transform: uppercase;
-            letter-spacing: 1px;
         }
 
-        .nav-container a:hover {
-            color: var(--primary);
+        .nav-links a:hover {
+            color: white;
+            background: rgba(255, 255, 255, 0.05);
         }
 
         /* Hero Section */
         #hero {
             height: 100vh;
             display: flex;
+            flex-direction: column;
             align-items: center;
             justify-content: center;
-            padding: 0 2rem;
-            position: relative;
-        }
-
-        .hero-content {
             text-align: center;
-            max-width: 900px;
-            z-index: 1;
+            padding: 0 2rem;
         }
 
-        .profile-wrapper {
+        .avatar-container {
             position: relative;
-            display: inline-block;
-            margin-bottom: 2.5rem;
+            margin-bottom: 2rem;
+            animation: float 6s ease-in-out infinite;
         }
 
-        .profile-img {
-            width: 200px;
-            height: 200px;
-            border-radius: 50%;
+        @keyframes float {
+            0%, 100% { transform: translateY(0px); }
+            50% { transform: translateY(-15px); }
+        }
+
+        .avatar {
+            width: 180px;
+            height: 180px;
+            border-radius: 40px;
             object-fit: cover;
-            border: 3px solid var(--primary);
-            padding: 5px;
-            background: var(--bg);
-            box-shadow: 0 0 30px var(--primary-glow);
+            border: 2px solid var(--border);
+            transform: rotate(-3deg);
+            transition: 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275);
         }
 
-        .hero-content h1 {
-            font-size: clamp(3rem, 8vw, 5rem);
+        .avatar:hover {
+            transform: rotate(0deg) scale(1.05);
+            border-color: var(--primary);
+        }
+
+        h1 {
+            font-size: clamp(2.5rem, 10vw, 5.5rem);
             font-weight: 800;
-            margin-bottom: 1rem;
-            background: linear-gradient(to right, #fff, var(--primary));
+            letter-spacing: -3px;
+            margin-bottom: 0.5rem;
+            line-height: 1;
+            background: linear-gradient(to bottom right, #fff, #666);
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
-            letter-spacing: -2px;
         }
 
-        .hero-content .typing-text {
-            font-size: 1.5rem;
-            color: var(--text-dim);
-            height: 1.6em;
-            margin-bottom: 2.5rem;
+        .tagline {
+            font-size: 1.1rem;
+            color: var(--dim);
+            max-width: 500px;
+            margin-bottom: 3rem;
         }
 
-        .btn-group {
-            display: flex;
-            gap: 1.5rem;
-            justify-content: center;
-        }
-
-        .btn {
-            padding: 1rem 2.5rem;
-            border-radius: 50px;
-            text-decoration: none;
-            font-weight: 600;
-            transition: 0.4s;
-            display: flex;
-            align-items: center;
-            gap: 0.5rem;
-        }
-
-        .btn-primary {
-            background: var(--primary);
-            color: white;
-            box-shadow: 0 10px 20px rgba(99, 102, 241, 0.3);
-        }
-
-        .btn-primary:hover {
-            transform: translateY(-3px);
-            box-shadow: 0 15px 30px rgba(99, 102, 241, 0.4);
-        }
-
-        .btn-secondary {
-            background: rgba(255, 255, 255, 0.05);
-            color: white;
-            border: 1px solid var(--glass-border);
-        }
-
-        .btn-secondary:hover {
-            background: rgba(255, 255, 255, 0.1);
-        }
-
-        /* Sections */
+        /* Modern Cards */
         section {
-            padding: 10rem 2rem;
-            max-width: 1100px;
+            padding: 8rem 1.5rem;
+            max-width: 1000px;
             margin: 0 auto;
         }
 
-        .section-header {
-            margin-bottom: 4rem;
-        }
-
-        .section-header h2 {
-            font-size: 2.5rem;
-            font-weight: 700;
+        .section-title {
+            font-size: 2rem;
+            font-weight: 800;
+            margin-bottom: 3rem;
             display: flex;
             align-items: center;
             gap: 1rem;
         }
 
-        .section-header h2::after {
+        .section-title::before {
             content: '';
+            width: 40px;
             height: 2px;
-            flex-grow: 1;
-            background: linear-gradient(to right, var(--primary), transparent);
+            background: var(--primary);
         }
 
-        /* Experience Cards */
-        .glass-card {
-            background: var(--card-bg);
-            backdrop-filter: blur(12px);
-            border: 1px solid var(--glass-border);
-            border-radius: 24px;
+        .card {
+            background: var(--card);
+            border: 1px solid var(--border);
             padding: 2.5rem;
-            margin-bottom: 2rem;
+            border-radius: 32px;
             transition: 0.4s;
+            position: relative;
+            overflow: hidden;
         }
 
-        .glass-card:hover {
-            border-color: rgba(99, 102, 241, 0.4);
-            transform: scale(1.02);
+        .card:hover {
+            border-color: rgba(139, 92, 246, 0.3);
+            transform: translateY(-5px);
+            background: rgba(17, 24, 39, 0.9);
         }
 
-        .card-header {
+        .card::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 4px;
+            background: linear-gradient(to right, var(--primary), var(--secondary));
+            opacity: 0;
+            transition: 0.3s;
+        }
+
+        .card:hover::after {
+            opacity: 1;
+        }
+
+        /* Experience Items */
+        .exp-item {
+            margin-bottom: 2rem;
+            padding-bottom: 2rem;
+            border-bottom: 1px solid var(--border);
+        }
+
+        .exp-item:last-child {
+            margin-bottom: 0;
+            padding-bottom: 0;
+            border-bottom: none;
+        }
+
+        .job-header {
             display: flex;
             justify-content: space-between;
-            align-items: flex-start;
-            margin-bottom: 1.5rem;
-            flex-wrap: wrap;
-            gap: 1rem;
+            align-items: baseline;
+            margin-bottom: 1rem;
         }
 
         .job-title {
-            font-size: 1.5rem;
+            font-size: 1.25rem;
             font-weight: 700;
             color: var(--primary);
         }
 
-        .company-name {
-            font-size: 1.1rem;
-            color: var(--text-dim);
+        .company {
+            color: var(--dim);
             font-weight: 500;
         }
 
-        .date-badge {
-            background: rgba(99, 102, 241, 0.1);
-            color: var(--primary);
-            padding: 0.4rem 1rem;
-            border-radius: 12px;
-            font-size: 0.85rem;
-            font-weight: 600;
-        }
-
-        .card-content ul {
-            list-style: none;
-        }
-
-        .card-content li {
-            position: relative;
-            padding-left: 1.5rem;
-            margin-bottom: 0.75rem;
-            color: var(--text-dim);
-        }
-
-        .card-content li::before {
-            content: '→';
-            position: absolute;
-            left: 0;
-            color: var(--primary);
+        .date {
+            font-size: 0.8rem;
+            background: rgba(255, 255, 255, 0.05);
+            padding: 0.25rem 0.75rem;
+            border-radius: 10px;
+            color: var(--dim);
         }
 
         /* Skills Grid */
-        .skills-container {
+        .skills-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 2rem;
-        }
-
-        .skill-group h3 {
-            margin-bottom: 1.5rem;
-            font-size: 1.2rem;
-            color: var(--text-main);
-        }
-
-        .skill-tags {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 0.75rem;
+            grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+            gap: 1rem;
         }
 
         .skill-tag {
-            background: rgba(255, 255, 255, 0.05);
-            padding: 0.75rem 1.25rem;
-            border-radius: 16px;
-            border: 1px solid var(--glass-border);
-            font-weight: 500;
+            background: rgba(255, 255, 255, 0.03);
+            border: 1px solid var(--border);
+            padding: 1rem;
+            border-radius: 20px;
+            text-align: center;
+            font-size: 0.9rem;
+            font-weight: 600;
             transition: 0.3s;
         }
 
         .skill-tag:hover {
-            background: var(--primary);
-            color: white;
-            border-color: var(--primary);
-            transform: translateY(-3px);
+            background: white;
+            color: black;
+            border-color: white;
         }
 
         /* Contact Section */
-        .contact-wrapper {
+        .contact-grid {
             display: grid;
             grid-template-columns: 1fr 1fr;
-            gap: 4rem;
+            gap: 2rem;
         }
 
-        .contact-item {
+        .contact-link {
             display: flex;
             align-items: center;
-            gap: 1.5rem;
-            margin-bottom: 2rem;
-        }
-
-        .contact-icon {
-            width: 50px;
-            height: 50px;
-            background: rgba(99, 102, 241, 0.1);
-            border-radius: 15px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            color: var(--primary);
-            font-size: 1.2rem;
-        }
-
-        .contact-details h4 {
-            font-size: 0.9rem;
-            color: var(--text-dim);
-            text-transform: uppercase;
-        }
-
-        .contact-details p, .contact-details a {
-            font-size: 1.1rem;
-            font-weight: 600;
-            color: var(--text-main);
+            gap: 1rem;
+            padding: 1.5rem;
+            background: rgba(255, 255, 255, 0.02);
+            border-radius: 24px;
             text-decoration: none;
+            color: var(--text);
+            border: 1px solid var(--border);
+            transition: 0.3s;
+        }
+
+        .contact-link:hover {
+            background: rgba(255, 255, 255, 0.05);
+            border-color: var(--primary);
         }
 
         /* Reveal Animation */
         .reveal {
             opacity: 0;
-            transform: translateY(30px);
-            transition: all 0.8s ease-out;
+            transform: translateY(20px);
+            transition: 1s cubic-bezier(0.2, 1, 0.2, 1);
         }
 
         .reveal.active {
@@ -363,211 +308,130 @@
         }
 
         @media (max-width: 768px) {
-            .contact-wrapper { grid-template-columns: 1fr; }
-            .nav-container { gap: 1rem; }
-            .hero-content h1 { font-size: 3.5rem; }
-            .btn-group { flex-direction: column; }
+            .contact-grid { grid-template-columns: 1fr; }
+            h1 { letter-spacing: -2px; }
+            nav { width: 95%; top: 10px; }
         }
     </style>
 </head>
 <body>
 
-    <div class="bg-glow">
-        <div class="blob" style="top: 10%; left: 10%;"></div>
-        <div class="blob" style="bottom: 10%; right: 10%; background: var(--accent);"></div>
-    </div>
+    <div class="bg-mesh"></div>
 
-    <nav id="navbar">
-        <div class="nav-container">
-            <a href="#hero">Home</a>
-            <a href="#about">About</a>
-            <a href="#experience">Works</a>
-            <a href="#skills">Skills</a>
+    <nav>
+        <div class="nav-links">
+            <a href="#hero">Start</a>
+            <a href="#about">Story</a>
+            <a href="#work">Work</a>
             <a href="#contact">Contact</a>
         </div>
     </nav>
 
-    <section id="hero">
-        <div class="hero-content">
-            <div class="profile-wrapper">
-                <img src="my_photo.jpg" alt="Dmitrii Dimov" class="profile-img">
-            </div>
-            <h1>Dmitrii Dimov</h1>
-            <div class="typing-text" id="typing-text"></div>
-            <div class="btn-group">
-                <a href="#contact" class="btn btn-primary">Let's Talk</a>
-                <a href="#experience" class="btn btn-secondary">View My Work</a>
-            </div>
+    <header id="hero">
+        <div class="avatar-container">
+            <img src="my_photo.jpg" alt="Dmitrii" class="avatar">
         </div>
-    </section>
+        <h1>Dmitrii Dimov</h1>
+        <p class="tagline">Innovative Building Services Engineer & Creative Graphic Designer based in Moldova.</p>
+        <div style="display: flex; gap: 1rem;">
+            <a href="#work" style="background: white; color: black; padding: 1rem 2rem; border-radius: 100px; text-decoration: none; font-weight: 700;">View Portfolio</a>
+            <a href="#contact" style="background: rgba(255,255,255,0.05); color: white; border: 1px solid var(--border); padding: 1rem 2rem; border-radius: 100px; text-decoration: none; font-weight: 700; backdrop-filter: blur(10px);">Say Hello</a>
+        </div>
+    </header>
 
     <section id="about" class="reveal">
-        <div class="section-header">
-            <h2>About Me</h2>
-        </div>
-        <div class="glass-card">
-            <p style="font-size: 1.25rem; line-height: 1.8;">
-                Detail-oriented professional with a technical foundation in <strong>Building Services Engineering</strong> 
-                and practical experience in <strong>Graphic Design</strong> and Logistics Management. 
-                I bridge the gap between complex technical specifications and user-centric visual storytelling.
+        <h2 class="section-title">The Story</h2>
+        <div class="card">
+            <p style="font-size: 1.2rem; color: var(--dim);">
+                I specialize in bridging the gap between <span style="color: white; font-weight: 700;">technical precision</span> and 
+                <span style="color: white; font-weight: 700;">visual storytelling</span>. 
+                With a background in Engineering and a passion for Graphic Design, I create solutions that are both functional and aesthetically superior.
             </p>
         </div>
     </section>
 
-    <section id="experience" class="reveal">
-        <div class="section-header">
-            <h2>Experience</h2>
-        </div>
-        
-        <div class="glass-card">
-            <div class="card-header">
-                <div>
-                    <div class="job-title">Graphic Designer</div>
-                    <div class="company-name">Fabrik Home | Cahul, Moldova</div>
+    <section id="work" class="reveal">
+        <h2 class="section-title">Selected Experience</h2>
+        <div class="card">
+            <div class="exp-item">
+                <div class="job-header">
+                    <span class="job-title">Graphic Designer</span>
+                    <span class="date">2024 – Present</span>
                 </div>
-                <div class="date-badge">2024 – Present</div>
+                <div class="company">Fabrik Home | Cahul, Moldova</div>
+                <p style="margin-top: 1rem; color: var(--dim);">Technical assembly documentation, 3D interior renderings, and digital product assets.</p>
             </div>
-            <div class="card-content">
-                <ul>
-                    <li>Develops technical assembly instructions for furniture systems.</li>
-                    <li>Creates high-fidelity interior renderings and product assets.</li>
-                    <li>Designs interactive dimension documentation for enhanced UX.</li>
-                </ul>
-            </div>
-        </div>
-
-        <div class="glass-card">
-            <div class="card-header">
-                <div>
-                    <div class="job-title">Distribution Manager</div>
-                    <div class="company-name">Coffee Walk</div>
+            <div class="exp-item">
+                <div class="job-header">
+                    <span class="job-title">Distribution Manager</span>
+                    <span class="date">2021 – 2022</span>
                 </div>
-                <div class="date-badge">2021 – 2022</div>
-            </div>
-            <div class="card-content">
-                <ul>
-                    <li>Managed logistics for specialty beverage and spice distribution.</li>
-                    <li>Optimized distribution chains for regional delivery networks.</li>
-                </ul>
+                <div class="company">Coffee Walk</div>
+                <p style="margin-top: 1rem; color: var(--dim);">Logistics optimization and supply chain management for beverage distribution.</p>
             </div>
         </div>
     </section>
 
     <section id="skills" class="reveal">
-        <div class="section-header">
-            <h2>Expertise</h2>
-        </div>
-        <div class="skills-container">
-            <div class="skill-group">
-                <h3>Technical / CAD</h3>
-                <div class="skill-tags">
-                    <span class="skill-tag">AutoCAD</span>
-                    <span class="skill-tag">Allplan 2D/3D</span>
-                    <span class="skill-tag">Instalații Systems</span>
-                </div>
-            </div>
-            <div class="skill-group">
-                <h3>Visual Design</h3>
-                <div class="skill-tags">
-                    <span class="skill-tag">Technical Illustration</span>
-                    <span class="skill-tag">Interior Rendering</span>
-                    <span class="skill-tag">Dimensioning</span>
-                    <span class="skill-tag">Photography</span>
-                </div>
-            </div>
-            <div class="skill-group">
-                <h3>Process</h3>
-                <div class="skill-tags">
-                    <span class="skill-tag">Logistics Management</span>
-                    <span class="skill-tag">Documentation</span>
-                    <span class="skill-tag">Project Tracking</span>
-                </div>
-            </div>
+        <h2 class="section-title">Core Skills</h2>
+        <div class="skills-grid">
+            <div class="skill-tag">AutoCAD</div>
+            <div class="skill-tag">Allplan 3D</div>
+            <div class="skill-tag">Illustrations</div>
+            <div class="skill-tag">Renderings</div>
+            <div class="skill-tag">Logistics</div>
+            <div class="skill-tag">Product Design</div>
         </div>
     </section>
 
-    <section id="contact" class="reveal">
-        <div class="section-header">
-            <h2>Contact</h2>
-        </div>
-        <div class="contact-wrapper">
-            <div class="contact-info">
-                <div class="contact-item">
-                    <div class="contact-icon">📍</div>
-                    <div class="contact-details">
-                        <h4>Location</h4>
-                        <p>Libertatii 59, Moldova</p>
-                    </div>
+    <section id="contact" class="reveal" style="padding-bottom: 15rem;">
+        <h2 class="section-title">Let's Connect</h2>
+        <div class="contact-grid">
+            <a href="mailto:dimov0207@gmail.com" class="contact-link">
+                <div style="font-size: 1.5rem;">✉️</div>
+                <div>
+                    <div style="font-size: 0.7rem; color: var(--dim); text-transform: uppercase;">Email</div>
+                    <div style="font-weight: 700;">dimov0207@gmail.com</div>
                 </div>
-                <div class="contact-item">
-                    <div class="contact-icon">📧</div>
-                    <div class="contact-details">
-                        <h4>Email</h4>
-                        <a href="mailto:dimov0207@gmail.com">dimov0207@gmail.com</a>
-                    </div>
+            </a>
+            <a href="https://wa.me/37379625983" class="contact-link">
+                <div style="font-size: 1.5rem;">💬</div>
+                <div>
+                    <div style="font-size: 0.7rem; color: var(--dim); text-transform: uppercase;">WhatsApp</div>
+                    <div style="font-weight: 700;">+373 79625983</div>
                 </div>
-                <div class="contact-item">
-                    <div class="contact-icon">💬</div>
-                    <div class="contact-details">
-                        <h4>WhatsApp</h4>
-                        <a href="https://wa.me/37379625983">+373 79625983</a>
-                    </div>
-                </div>
-            </div>
-            <div class="glass-card">
-                <form id="contact-form" onsubmit="event.preventDefault(); alert('Message sent successfully!');">
-                    <div style="display: grid; gap: 1.5rem;">
-                        <input type="text" placeholder="Your Name" style="background: rgba(255,255,255,0.05); border: 1px solid var(--glass-border); padding: 1rem; border-radius: 12px; color: white; width: 100%;">
-                        <textarea placeholder="How can I help you?" rows="4" style="background: rgba(255,255,255,0.05); border: 1px solid var(--glass-border); padding: 1rem; border-radius: 12px; color: white; width: 100%;"></textarea>
-                        <button type="submit" class="btn btn-primary" style="border: none; cursor: pointer; justify-content: center;">Send Message</button>
-                    </div>
-                </form>
-            </div>
+            </a>
         </div>
     </section>
 
-    <footer style="padding: 5rem 2rem; text-align: center; color: var(--text-dim); font-size: 0.9rem; border-top: 1px solid var(--glass-border);">
-        <p>© 2026 Dmitrii Dimov. Designed for the Future.</p>
+    <footer style="padding: 2rem; text-align: center; border-top: 1px solid var(--border); color: var(--dim); font-size: 0.8rem;">
+        <p>© 2026 Dmitrii Dimov | Crafted with passion & precision.</p>
     </footer>
 
     <script>
-        // Typing Effect
-        const text = "Building Services Engineer | Graphic Designer | Innovator";
-        let i = 0;
-        function type() {
-            if (i < text.length) {
-                document.getElementById("typing-text").innerHTML += text.charAt(i);
-                i++;
-                setTimeout(type, 50);
-            }
-        }
-        window.onload = type;
-
-        // Reveal on Scroll
-        function reveal() {
-            var reveals = document.querySelectorAll(".reveal");
-            for (var i = 0; i < reveals.length; i++) {
-                var windowHeight = window.innerHeight;
-                var elementTop = reveals[i].getBoundingClientRect().top;
-                var elementVisible = 150;
-                if (elementTop < windowHeight - elementVisible) {
-                    reveals[i].classList.add("active");
+        // Scroll Reveal
+        const reveals = document.querySelectorAll('.reveal');
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('active');
                 }
-            }
-        }
-        window.addEventListener("scroll", reveal);
+            });
+        }, { threshold: 0.1 });
 
-        // Navbar Scroll Effect
-        window.onscroll = function() {
-            const nav = document.getElementById('navbar');
-            if (window.pageYOffset > 50) {
-                nav.style.background = "rgba(15, 23, 42, 0.9)";
-                nav.style.padding = "1rem 0";
+        reveals.forEach(reveal => observer.observe(reveal));
+
+        // Smooth Nav Background
+        window.addEventListener('scroll', () => {
+            const nav = document.querySelector('nav');
+            if (window.scrollY > 50) {
+                nav.style.background = 'rgba(10, 10, 10, 0.8)';
+                nav.style.width = '80%';
             } else {
-                nav.style.background = "transparent";
-                nav.style.padding = "1.5rem 0";
+                nav.style.background = 'rgba(255, 255, 255, 0.03)';
+                nav.style.width = '90%';
             }
-        };
+        });
     </script>
 </body>
 </html>
