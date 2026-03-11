@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Dmitrii Dimov | Professional Portfolio</title>
-    <!-- v1.1.0 - Full Data Integration -->
+    <!-- v1.2.0 - Added CV Download Buttons -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
@@ -128,7 +128,45 @@
             color: var(--dim);
             font-size: 1.1rem;
             max-width: 600px;
-            margin-bottom: 2rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .download-group {
+            display: flex;
+            gap: 1rem;
+            margin-top: 1.5rem;
+            flex-wrap: wrap;
+            justify-content: center;
+        }
+
+        .btn-download {
+            background: var(--primary);
+            color: white;
+            padding: 0.8rem 1.5rem;
+            border-radius: 12px;
+            text-decoration: none;
+            font-weight: 700;
+            font-size: 0.9rem;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            transition: 0.3s;
+            box-shadow: 0 10px 20px rgba(139, 92, 246, 0.2);
+        }
+
+        .btn-download:hover {
+            transform: translateY(-3px);
+            background: #7c3aed;
+            box-shadow: 0 15px 30px rgba(139, 92, 246, 0.3);
+        }
+
+        .btn-download.romana {
+            background: rgba(255, 255, 255, 0.05);
+            border: 1px solid var(--border);
+        }
+
+        .btn-download.romana:hover {
+            background: rgba(255, 255, 255, 0.1);
         }
 
         /* Sections */
@@ -344,6 +382,15 @@
             Building Services Engineer | Graphic Designer | Innovator
         </p>
         <p class="meta">📍 Libertatii 59, Moldova</p>
+        
+        <div class="download-group">
+            <a href="CV_English.pdf" download class="btn-download">
+                📥 Download CV (English)
+            </a>
+            <a href="CV_Romanian.pdf" download class="btn-download romana">
+                📥 Download CV (Română)
+            </a>
+        </div>
     </header>
 
     <section id="about" class="reveal">
@@ -470,8 +517,11 @@
                 <div class="value">+373 79625983</div>
             </div>
             <div class="contact-card">
-                <div class="label">Location</div>
-                <div class="value">Libertatii 59, Moldova</div>
+                <div class="label">Full Resume</div>
+                <div style="display: flex; gap: 0.5rem; margin-top: 0.5rem;">
+                    <a href="CV_English.pdf" download style="color: var(--primary); text-decoration: none; font-weight: 700; font-size: 0.8rem;">ENG 📥</a>
+                    <a href="CV_Romanian.pdf" download style="color: var(--primary); text-decoration: none; font-weight: 700; font-size: 0.8rem;">ROM 📥</a>
+                </div>
             </div>
         </div>
     </section>
