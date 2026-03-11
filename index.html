@@ -3,8 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Dmitrii Dimov | Digital Experience</title>
-    <!-- v1.0.2 - Innovative Redesign -->
+    <title>Dmitrii Dimov | Professional Portfolio</title>
+    <!-- v1.1.0 - Full Data Integration -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
@@ -13,7 +13,7 @@
             --primary: #8b5cf6;
             --secondary: #ec4899;
             --dark: #030712;
-            --card: rgba(17, 24, 39, 0.8);
+            --card: rgba(17, 24, 39, 0.85);
             --border: rgba(255, 255, 255, 0.1);
             --text: #f3f4f6;
             --dim: #9ca3af;
@@ -23,7 +23,6 @@
             margin: 0;
             padding: 0;
             box-sizing: border-box;
-            cursor: default;
         }
 
         html {
@@ -38,7 +37,7 @@
             overflow-x: hidden;
         }
 
-        /* Dynamic Animated Background */
+        /* Animated Mesh Background */
         .bg-mesh {
             position: fixed;
             top: 0;
@@ -47,33 +46,24 @@
             height: 100%;
             z-index: -1;
             background: 
-                radial-gradient(at 0% 0%, rgba(139, 92, 246, 0.15) 0px, transparent 50%),
-                radial-gradient(at 100% 0%, rgba(236, 72, 153, 0.15) 0px, transparent 50%),
-                radial-gradient(at 100% 100%, rgba(59, 130, 246, 0.15) 0px, transparent 50%),
-                radial-gradient(at 0% 100%, rgba(16, 185, 129, 0.15) 0px, transparent 50%);
-            animation: mesh 20s ease infinite alternate;
+                radial-gradient(at 0% 0%, rgba(139, 92, 246, 0.1) 0px, transparent 50%),
+                radial-gradient(at 100% 0%, rgba(236, 72, 153, 0.1) 0px, transparent 50%),
+                radial-gradient(at 50% 50%, rgba(59, 130, 246, 0.05) 0px, transparent 50%);
         }
 
-        @keyframes mesh {
-            0% { transform: scale(1); }
-            100% { transform: scale(1.1); }
-        }
-
-        /* Glass Navigation */
         nav {
             position: fixed;
             top: 20px;
             left: 50%;
             transform: translateX(-50%);
             width: 90%;
-            max-width: 600px;
+            max-width: 800px;
             background: rgba(255, 255, 255, 0.03);
             backdrop-filter: blur(15px);
             border: 1px solid var(--border);
             border-radius: 100px;
             z-index: 1000;
             padding: 0.75rem;
-            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
         }
 
         .nav-links {
@@ -97,8 +87,8 @@
             background: rgba(255, 255, 255, 0.05);
         }
 
-        /* Hero Section */
-        #hero {
+        /* Hero */
+        header#hero {
             height: 100vh;
             display: flex;
             flex-direction: column;
@@ -108,59 +98,48 @@
             padding: 0 2rem;
         }
 
-        .avatar-container {
-            position: relative;
-            margin-bottom: 2rem;
-            animation: float 6s ease-in-out infinite;
-        }
-
-        @keyframes float {
-            0%, 100% { transform: translateY(0px); }
-            50% { transform: translateY(-15px); }
-        }
-
         .avatar {
             width: 180px;
             height: 180px;
             border-radius: 40px;
             object-fit: cover;
             border: 2px solid var(--border);
-            transform: rotate(-3deg);
-            transition: 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            margin-bottom: 2rem;
+            animation: float 6s ease-in-out infinite;
         }
 
-        .avatar:hover {
-            transform: rotate(0deg) scale(1.05);
-            border-color: var(--primary);
+        @keyframes float {
+            0%, 100% { transform: translateY(0px); }
+            50% { transform: translateY(-10px); }
         }
 
         h1 {
-            font-size: clamp(2.5rem, 10vw, 5.5rem);
+            font-size: clamp(2.5rem, 8vw, 5rem);
             font-weight: 800;
             letter-spacing: -3px;
-            margin-bottom: 0.5rem;
             line-height: 1;
-            background: linear-gradient(to bottom right, #fff, #666);
+            margin-bottom: 1rem;
+            background: linear-gradient(to right, #fff, #8b5cf6);
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
         }
 
-        .tagline {
-            font-size: 1.1rem;
+        .hero-info {
             color: var(--dim);
-            max-width: 500px;
-            margin-bottom: 3rem;
+            font-size: 1.1rem;
+            max-width: 600px;
+            margin-bottom: 2rem;
         }
 
-        /* Modern Cards */
+        /* Sections */
         section {
-            padding: 8rem 1.5rem;
+            padding: 6rem 1.5rem;
             max-width: 1000px;
             margin: 0 auto;
         }
 
         .section-title {
-            font-size: 2rem;
+            font-size: 2.2rem;
             font-weight: 800;
             margin-bottom: 3rem;
             display: flex;
@@ -168,137 +147,167 @@
             gap: 1rem;
         }
 
-        .section-title::before {
+        .section-title::after {
             content: '';
-            width: 40px;
-            height: 2px;
-            background: var(--primary);
+            flex-grow: 1;
+            height: 1px;
+            background: linear-gradient(to right, var(--primary), transparent);
         }
 
         .card {
             background: var(--card);
             border: 1px solid var(--border);
-            padding: 2.5rem;
+            padding: 3rem;
             border-radius: 32px;
-            transition: 0.4s;
-            position: relative;
-            overflow: hidden;
+            margin-bottom: 2rem;
+            transition: 0.4s ease;
         }
 
         .card:hover {
             border-color: rgba(139, 92, 246, 0.3);
             transform: translateY(-5px);
-            background: rgba(17, 24, 39, 0.9);
-        }
-
-        .card::after {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 4px;
-            background: linear-gradient(to right, var(--primary), var(--secondary));
-            opacity: 0;
-            transition: 0.3s;
-        }
-
-        .card:hover::after {
-            opacity: 1;
         }
 
         /* Experience Items */
-        .exp-item {
-            margin-bottom: 2rem;
-            padding-bottom: 2rem;
-            border-bottom: 1px solid var(--border);
+        .item {
+            margin-bottom: 3rem;
         }
 
-        .exp-item:last-child {
+        .item:last-child {
             margin-bottom: 0;
-            padding-bottom: 0;
-            border-bottom: none;
         }
 
-        .job-header {
+        .item-header {
             display: flex;
             justify-content: space-between;
-            align-items: baseline;
-            margin-bottom: 1rem;
+            align-items: flex-start;
+            flex-wrap: wrap;
+            gap: 1rem;
+            margin-bottom: 1.5rem;
         }
 
-        .job-title {
-            font-size: 1.25rem;
+        .title {
+            font-size: 1.4rem;
             font-weight: 700;
             color: var(--primary);
         }
 
-        .company {
+        .subtitle {
+            font-size: 1.1rem;
+            color: white;
+            font-weight: 600;
+        }
+
+        .meta {
+            font-size: 0.9rem;
             color: var(--dim);
             font-weight: 500;
         }
 
-        .date {
-            font-size: 0.8rem;
-            background: rgba(255, 255, 255, 0.05);
-            padding: 0.25rem 0.75rem;
-            border-radius: 10px;
+        .date-badge {
+            background: rgba(139, 92, 246, 0.1);
+            color: var(--primary);
+            padding: 0.4rem 1rem;
+            border-radius: 12px;
+            font-size: 0.85rem;
+            font-weight: 700;
+        }
+
+        ul {
+            list-style: none;
+            margin-top: 1rem;
+        }
+
+        li {
+            position: relative;
+            padding-left: 1.5rem;
+            margin-bottom: 0.75rem;
             color: var(--dim);
         }
 
-        /* Skills Grid */
-        .skills-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
-            gap: 1rem;
+        li::before {
+            content: '•';
+            position: absolute;
+            left: 0;
+            color: var(--primary);
+            font-weight: 800;
         }
 
-        .skill-tag {
-            background: rgba(255, 255, 255, 0.03);
+        /* Skills Grid */
+        .skills-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 2rem;
+        }
+
+        .skill-group h3 {
+            font-size: 1rem;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            margin-bottom: 1.5rem;
+            color: var(--dim);
+        }
+
+        .skill-tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.75rem;
+        }
+
+        .tag {
+            background: rgba(255, 255, 255, 0.05);
             border: 1px solid var(--border);
-            padding: 1rem;
-            border-radius: 20px;
-            text-align: center;
+            padding: 0.6rem 1.2rem;
+            border-radius: 16px;
             font-size: 0.9rem;
             font-weight: 600;
             transition: 0.3s;
         }
 
-        .skill-tag:hover {
-            background: white;
-            color: black;
-            border-color: white;
+        .tag:hover {
+            background: var(--primary);
+            color: white;
+            transform: translateY(-2px);
         }
 
-        /* Contact Section */
+        /* Contact Wrapper */
         .contact-grid {
             display: grid;
-            grid-template-columns: 1fr 1fr;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
             gap: 2rem;
         }
 
-        .contact-link {
-            display: flex;
-            align-items: center;
-            gap: 1rem;
-            padding: 1.5rem;
+        .contact-card {
             background: rgba(255, 255, 255, 0.02);
+            border: 1px solid var(--border);
+            padding: 2rem;
             border-radius: 24px;
             text-decoration: none;
-            color: var(--text);
-            border: 1px solid var(--border);
+            color: white;
             transition: 0.3s;
         }
 
-        .contact-link:hover {
-            background: rgba(255, 255, 255, 0.05);
+        .contact-card:hover {
+            background: rgba(139, 92, 246, 0.05);
             border-color: var(--primary);
+        }
+
+        .label {
+            font-size: 0.75rem;
+            text-transform: uppercase;
+            color: var(--dim);
+            margin-bottom: 0.5rem;
+        }
+
+        .value {
+            font-size: 1.1rem;
+            font-weight: 700;
         }
 
         /* Reveal Animation */
         .reveal {
             opacity: 0;
-            transform: translateY(20px);
+            transform: translateY(30px);
             transition: 1s cubic-bezier(0.2, 1, 0.2, 1);
         }
 
@@ -308,9 +317,8 @@
         }
 
         @media (max-width: 768px) {
-            .contact-grid { grid-template-columns: 1fr; }
-            h1 { letter-spacing: -2px; }
-            nav { width: 95%; top: 10px; }
+            .card { padding: 2rem; }
+            .item-header { flex-direction: column; gap: 0.5rem; }
         }
     </style>
 </head>
@@ -320,118 +328,166 @@
 
     <nav>
         <div class="nav-links">
-            <a href="#hero">Start</a>
-            <a href="#about">Story</a>
-            <a href="#work">Work</a>
+            <a href="#hero">Intro</a>
+            <a href="#about">Summary</a>
+            <a href="#experience">Work</a>
+            <a href="#education">Education</a>
+            <a href="#skills">Skills</a>
             <a href="#contact">Contact</a>
         </div>
     </nav>
 
     <header id="hero">
-        <div class="avatar-container">
-            <img src="my_photo.jpg" alt="Dmitrii" class="avatar">
-        </div>
+        <img src="my_photo.jpg" alt="Dmitrii Dimov" class="avatar">
         <h1>Dmitrii Dimov</h1>
-        <p class="tagline">Innovative Building Services Engineer & Creative Graphic Designer based in Moldova.</p>
-        <div style="display: flex; gap: 1rem;">
-            <a href="#work" style="background: white; color: black; padding: 1rem 2rem; border-radius: 100px; text-decoration: none; font-weight: 700;">View Portfolio</a>
-            <a href="#contact" style="background: rgba(255,255,255,0.05); color: white; border: 1px solid var(--border); padding: 1rem 2rem; border-radius: 100px; text-decoration: none; font-weight: 700; backdrop-filter: blur(10px);">Say Hello</a>
-        </div>
+        <p class="hero-info">
+            Building Services Engineer | Graphic Designer | Innovator
+        </p>
+        <p class="meta">📍 Libertatii 59, Moldova</p>
     </header>
 
     <section id="about" class="reveal">
-        <h2 class="section-title">The Story</h2>
+        <h2 class="section-title">Summary</h2>
         <div class="card">
-            <p style="font-size: 1.2rem; color: var(--dim);">
-                I specialize in bridging the gap between <span style="color: white; font-weight: 700;">technical precision</span> and 
-                <span style="color: white; font-weight: 700;">visual storytelling</span>. 
-                With a background in Engineering and a passion for Graphic Design, I create solutions that are both functional and aesthetically superior.
+            <p style="font-size: 1.25rem; line-height: 1.8; color: var(--dim);">
+                Detail-oriented professional with a technical foundation in <span style="color: white; font-weight: 700;">Building Services Engineering</span> 
+                and practical experience in <span style="color: white; font-weight: 700;">Graphic Design</span> and Logistics Management. 
+                Proficient in industry-standard CAD software and visual documentation, with a proven ability to bridge the gap between 
+                technical specifications and user-friendly visual content.
             </p>
         </div>
     </section>
 
-    <section id="work" class="reveal">
-        <h2 class="section-title">Selected Experience</h2>
+    <section id="experience" class="reveal">
+        <h2 class="section-title">Experience</h2>
         <div class="card">
-            <div class="exp-item">
-                <div class="job-header">
-                    <span class="job-title">Graphic Designer</span>
-                    <span class="date">2024 – Present</span>
+            <div class="item">
+                <div class="item-header">
+                    <div>
+                        <div class="title">Graphic Designer</div>
+                        <div class="subtitle">Fabrik Home</div>
+                        <div class="meta">Cahul, Moldova</div>
+                    </div>
+                    <div class="date-badge">Feb 2024 – Present</div>
                 </div>
-                <div class="company">Fabrik Home | Cahul, Moldova</div>
-                <p style="margin-top: 1rem; color: var(--dim);">Technical assembly documentation, 3D interior renderings, and digital product assets.</p>
+                <ul>
+                    <li>Develops comprehensive technical instructions for furniture assembly.</li>
+                    <li>Creates high-quality website assets, including interior renderings and multi-angle product photography.</li>
+                    <li>Designs informative feature and dimension cards to improve user experience and product clarity.</li>
+                </ul>
             </div>
-            <div class="exp-item">
-                <div class="job-header">
-                    <span class="job-title">Distribution Manager</span>
-                    <span class="date">2021 – 2022</span>
+
+            <div class="item">
+                <div class="item-header">
+                    <div>
+                        <div class="title">Distribution Manager</div>
+                        <div class="subtitle">Coffee Walk</div>
+                        <div class="meta">Coffee, Tea, Cocoa & Spices</div>
+                    </div>
+                    <div class="date-badge">Nov 2021 – Aug 2022</div>
                 </div>
-                <div class="company">Coffee Walk</div>
-                <p style="margin-top: 1rem; color: var(--dim);">Logistics optimization and supply chain management for beverage distribution.</p>
+                <ul>
+                    <li>Managed the distribution and logistics for specialty beverage and spice products.</li>
+                </ul>
+            </div>
+        </div>
+    </section>
+
+    <section id="education" class="reveal">
+        <h2 class="section-title">Education</h2>
+        <div class="card">
+            <div class="item">
+                <div class="item-header">
+                    <div>
+                        <div class="title">Bachelor’s Degree in Building Services</div>
+                        <div class="subtitle">Universitatea Tehnică „Gheorghe Asachi”</div>
+                        <div class="meta">Iași, Romania | Specialty: Instalații</div>
+                    </div>
+                    <div class="date-badge">2022 – Present</div>
+                </div>
+                <p style="color: var(--dim);">Focusing on the design and implementation of building installations and systems.</p>
+            </div>
+
+            <div class="item">
+                <div class="item-header">
+                    <div>
+                        <div class="title">Baccalaureate Diploma</div>
+                        <div class="subtitle">Liceul Teoretic "Dimitrie Cantemir"</div>
+                        <div class="meta">Cahul, Moldova | Real Profile</div>
+                    </div>
+                    <div class="date-badge">2011 – 2022</div>
+                </div>
+                <p style="color: var(--dim);">Specialized in Mathematics, Chemistry, Physics, and Informatics.</p>
             </div>
         </div>
     </section>
 
     <section id="skills" class="reveal">
-        <h2 class="section-title">Core Skills</h2>
-        <div class="skills-grid">
-            <div class="skill-tag">AutoCAD</div>
-            <div class="skill-tag">Allplan 3D</div>
-            <div class="skill-tag">Illustrations</div>
-            <div class="skill-tag">Renderings</div>
-            <div class="skill-tag">Logistics</div>
-            <div class="skill-tag">Product Design</div>
+        <h2 class="section-title">Skills</h2>
+        <div class="skills-container">
+            <div class="skill-group">
+                <h3>Technical / CAD</h3>
+                <div class="skill-tags">
+                    <span class="tag">AutoCAD (Medium)</span>
+                    <span class="tag">Allplan 2D & 3D (Medium)</span>
+                    <span class="tag">Building Installations</span>
+                </div>
+            </div>
+            <div class="skill-group">
+                <h3>Design</h3>
+                <div class="skill-tags">
+                    <span class="tag">Technical Illustration</span>
+                    <span class="tag">Furniture Rendering</span>
+                    <span class="tag">Dimension Documentation</span>
+                    <span class="tag">Product Photography</span>
+                </div>
+            </div>
+            <div class="skill-group">
+                <h3>Software</h3>
+                <div class="skill-tags">
+                    <span class="tag">MS Excel</span>
+                    <span class="tag">PowerPoint</span>
+                    <span class="tag">Word</span>
+                </div>
+            </div>
         </div>
     </section>
 
-    <section id="contact" class="reveal" style="padding-bottom: 15rem;">
-        <h2 class="section-title">Let's Connect</h2>
+    <section id="contact" class="reveal">
+        <h2 class="section-title">Contact</h2>
         <div class="contact-grid">
-            <a href="mailto:dimov0207@gmail.com" class="contact-link">
-                <div style="font-size: 1.5rem;">✉️</div>
-                <div>
-                    <div style="font-size: 0.7rem; color: var(--dim); text-transform: uppercase;">Email</div>
-                    <div style="font-weight: 700;">dimov0207@gmail.com</div>
-                </div>
-            </a>
-            <a href="https://wa.me/37379625983" class="contact-link">
-                <div style="font-size: 1.5rem;">💬</div>
-                <div>
-                    <div style="font-size: 0.7rem; color: var(--dim); text-transform: uppercase;">WhatsApp</div>
-                    <div style="font-weight: 700;">+373 79625983</div>
-                </div>
-            </a>
+            <div class="contact-card">
+                <div class="label">Email</div>
+                <div class="value"><a href="mailto:dimov0207@gmail.com" style="color: white; text-decoration: none;">dimov0207@gmail.com</a></div>
+            </div>
+            <div class="contact-card">
+                <div class="label">Phone</div>
+                <div class="value">(+373) 079171627</div>
+                <div class="value">(+40) 07545519887</div>
+            </div>
+            <div class="contact-card">
+                <div class="label">WhatsApp</div>
+                <div class="value">+373 79625983</div>
+            </div>
+            <div class="contact-card">
+                <div class="label">Location</div>
+                <div class="value">Libertatii 59, Moldova</div>
+            </div>
         </div>
     </section>
 
-    <footer style="padding: 2rem; text-align: center; border-top: 1px solid var(--border); color: var(--dim); font-size: 0.8rem;">
-        <p>© 2026 Dmitrii Dimov | Crafted with passion & precision.</p>
+    <footer style="padding: 4rem 2rem; text-align: center; color: var(--dim); font-size: 0.85rem; border-top: 1px solid var(--border);">
+        <p>© 2026 Dmitrii Dimov | Engineered with Precision.</p>
     </footer>
 
     <script>
-        // Scroll Reveal
-        const reveals = document.querySelectorAll('.reveal');
         const observer = new IntersectionObserver((entries) => {
             entries.forEach(entry => {
-                if (entry.isIntersecting) {
-                    entry.target.classList.add('active');
-                }
+                if (entry.isIntersecting) entry.target.classList.add('active');
             });
         }, { threshold: 0.1 });
 
-        reveals.forEach(reveal => observer.observe(reveal));
-
-        // Smooth Nav Background
-        window.addEventListener('scroll', () => {
-            const nav = document.querySelector('nav');
-            if (window.scrollY > 50) {
-                nav.style.background = 'rgba(10, 10, 10, 0.8)';
-                nav.style.width = '80%';
-            } else {
-                nav.style.background = 'rgba(255, 255, 255, 0.03)';
-                nav.style.width = '90%';
-            }
-        });
+        document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
     </script>
 </body>
 </html>
